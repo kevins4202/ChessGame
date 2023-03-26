@@ -3,10 +3,11 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class ChessBoard extends JPanel {
+public class Board extends JPanel{
     private static final int SQUARE_SIZE = 80;
     private static final int BOARD_SIZE = 8 * SQUARE_SIZE;
 
@@ -15,7 +16,7 @@ public class ChessBoard extends JPanel {
     private Color lightSquare = new Color(240, 217, 181);
     private Color darkSquare = new Color(181, 136, 99);
 
-    public ChessBoard() {
+    public Board() {
         whitePawn = Toolkit.getDefaultToolkit().getImage("white_pawn.png");
         blackPawn = Toolkit.getDefaultToolkit().getImage("black_pawn.png");
         whiteRook = Toolkit.getDefaultToolkit().getImage("white_rook.png");
@@ -55,7 +56,7 @@ public class ChessBoard extends JPanel {
                 if (row == 1) {
                     g.drawImage(whitePawn, x, y, null);
                 } else if (row == 6) {
-                    g.drawImage(blackPawn, x, y, null);
+                    g.drawImage(blackPawn, x+10, y+10, null);
                 } else if (row == 0 && (col == 0 || col == 7)) {
                     g.drawImage(whiteRook, x, y, null);
                 } else if (row == 7 && (col == 0 || col == 7)) {
@@ -66,13 +67,18 @@ public class ChessBoard extends JPanel {
                     g.drawImage(blackKnight, x, y, null);
                 } else if (row == 0 && (col == 2 || col == 5)) {
                     g.drawImage(whiteBishop, x, y, null);
+                } else if (row == 7 && (col == 2 || col == 5)) {
+                    g.drawImage(blackBishop, x, y, null);
+                } else if (row == 7 && (col == 4)) {
+                    g.drawImage(blackKing, x, y, null);
+                } else if (row == 7 && (col == 3)) {
+                    g.drawImage(blackQueen, x, y, null);
+                } else if (row == 0 && (col == 4)) {
+                    g.drawImage(whiteKing, x, y, null);
+                } else if (row == 0 && (col == 3)) {
+                    g.drawImage(whiteQueen, x, y, null);
                 }
             }
         }
-    }
-
-    public static void main(String[] args){
-        ChessBoard c = new Chessboard();
-        // c.paintComponent(new Graphcs g);
     }
 }
